@@ -1,0 +1,54 @@
+Vlad-Stefan Dieaconu 2017
+Proiect - Alocator de memorie
+
+
+	Urmarind o exprimare concentrata, clara, acest fisier prezinta concis ideea
+generala de implementare.
+
+	Pentru a parsa comenzile am folosit scheletul oferit in enunt.
+
+	In rezolvarea acestei teme am implementat functiile cerute in enunt,
+folosind variabile sugestive si un coding style usor de urmarit. Prezinta un mod
+eficient de organizare al proiectului, de lucru cu pointeri si cu memoria.
+
+	Pentru a reduce numarul de parametri trimisi functiilor am realizat
+structura Arena, ce contine urmatorii membri:
+- un vector de caractere care reprezinta memoria
+- un unsigned int care reprezinta dimensiunea arenei
+
+	Pentru a avea un cod "aerisit" am implementat urmatoarele functii
+ajutatoare:
+- write_int: primeste, pe langa Arena, o pozitie si o valoare si scrie valoarea,
+incepand de la pozitia data.
+- read_int: citeste valoarea unui int incepand de la pozitia data.
+
+	Am implementat comenzile pe care trebuie sa le suporte alocatorul prin
+urmatoarele functii:
+- INITIALIZE: initializeaza o arena de N octeti si seteaza indicele de start la
+0. Alocarea arenei se face in mod dinamic.
+- FINALIZE: elibereaza memoria alocata si incheie programul.
+- DUMP: afiseaza intreaga harta a memoriei asa cum se gaseste in acel moment.
+- ALLOC: aloca un numar de octeti de memorie in arena si afiseaza indexul de
+inceput al blocului alocat. Prima data verifica daca arena este goala, in acest
+caz inserez blocul imediat dupa indexul de start. Daca mai sunt alte blocuri
+alocate in arena, verific daca este loc intre indexul de start si urmatorul bloc
+iar daca nu, parcurg arena, folosind 2 indexi in care retin indexul curent si
+urmatorul index, si verific daca exista loc intre cei 2. Daca am ajuns la
+ultimul bloc, verific daca este spatiu suficient dupa acesta si inserez blocul
+acolo.
+- FREE: elibereaza blocul de memorie al carui index il primeste ca parametru.
+- FILL: seteaza la valoarea data un anumit numar de octeti incepand cu pozitia
+data.
+- SHOW: afiseaza informatii statistice despre starea arenei:
+		- SHOW_FREE: Afiseaza, in format zecimal, numarul de octeti liberi din
+		arena, impreuna cu numarul de regiuni (zone continue) libere din arena.
+		- SHOW_USAGE: Afiseaza: numarul de octeti folositi din arena, eficienta
+		utilizarii = numarul de octeti folositi / numarul de octeti rezervati,
+		fragmentarea = numarul de zone libere - 1 / numarul de blocuri alocate.
+		- SHOW_ALLOCATIONS: Afiseaza pe cate o linie, zonele libere ai alocate,
+		in ordinea in care sunt asezate in arena.
+
+
+	Avand in vedere claritatea si lizibilitatea codului, am abordat un coding
+style usor de urmarit. Indentarea este adecvata, numele de variabile sunt
+sugestive.
